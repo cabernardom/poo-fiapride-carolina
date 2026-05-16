@@ -19,7 +19,7 @@ Este projeto acompanha os desafios das aulas 1 a 9 de Programacao Orientada a Ob
 ## Checklist de Implementacao
 
 - [x] Aula 1 - Classes e Objetos
-- [ ] Aula 2 - Metodos
+- [x] Aula 2 - Metodos
 - [ ] Aula 3 - Encapsulamento
 - [ ] Aula 4 - Construtores
 - [ ] Aula 5 - Associacao
@@ -42,8 +42,22 @@ Criar a classe `Passageiro` deixa o sistema organizado porque ela funciona como 
 
 ---
 
+### Aula 2 - Metodos
+
+**Pergunta:** Se nos podemos simplesmente fazer `passageiro.saldo = passageiro.saldo + 100` diretamente no codigo principal, por que da tanto trabalho criar um metodo especifico chamado `adicionarSaldo(valor)` para fazer isso? Quais seriam os riscos para a nossa startup de mobilidade se deixassemos qualquer programador alterar o saldo diretamente?
+
+**Sua Resposta:**
+
+Criar um metodo como `adicionarSaldo(valor)` e importante porque ele concentra a regra de negocio em um lugar so. Se cada programador alterasse o saldo diretamente, alguem poderia adicionar valor negativo, apagar o saldo por engano ou criar uma logica diferente em cada parte do sistema. Em uma startup de mobilidade, isso seria perigoso porque o saldo representa dinheiro do passageiro. O metodo permite validar o valor antes de mudar o atributo e deixa claro qual acao esta acontecendo. Alem disso, quando a regra mudar no futuro, por exemplo para registrar historico de recargas, emitir recibo ou aplicar promocao, a mudanca pode ficar dentro do proprio metodo. Assim, o objeto deixa de ser apenas uma lista de dados e passa a proteger melhor o proprio estado.
+
+---
+
 ## Desafios Tecnicos Implementados
 
 ### Aula 1
 
 Foram criadas a classe `Passageiro`, com os atributos `nome` e `saldo`, e a classe `SistemaPrincipal`, que instancia dois objetos diferentes para demonstrar a diferenca entre classe e objeto.
+
+### Aula 2
+
+Foram adicionados os metodos `adicionarSaldo(double valor)` e `pagarViagem(double custo)` na classe `Passageiro`. Os dois metodos recebem parametros, retornam `boolean` para indicar sucesso ou falha e validam os dados antes de alterar o saldo. A classe `SistemaPrincipal` foi atualizada para testar recargas validas, recarga invalida, pagamento com saldo suficiente, pagamento com saldo insuficiente e custo invalido.
