@@ -20,7 +20,7 @@ Este projeto acompanha os desafios das aulas 1 a 9 de Programacao Orientada a Ob
 
 - [x] Aula 1 - Classes e Objetos
 - [x] Aula 2 - Metodos
-- [ ] Aula 3 - Encapsulamento
+- [x] Aula 3 - Encapsulamento
 - [ ] Aula 4 - Construtores
 - [ ] Aula 5 - Associacao
 - [ ] Aula 6 - Heranca
@@ -52,6 +52,16 @@ Criar um metodo como `adicionarSaldo(valor)` e importante porque ele concentra a
 
 ---
 
+### Aula 3 - Encapsulamento
+
+**Pergunta:** No nosso codigo, os atributos sao `private`, mas os metodos `getSaldo()` e `getNome()` sao `public`. Por que e seguro deixar o `get` publico, mas perigoso deixar o atributo original publico?
+
+**Sua Resposta:**
+
+O `get` publico e mais seguro porque ele apenas entrega uma leitura do valor, sem permitir que outra classe altere diretamente o atributo original. Quando o atributo fica publico, qualquer parte do sistema pode mudar o saldo, o nome ou o CPF sem passar por nenhuma regra de validacao. No caso do FiapRide, isso poderia permitir saldo negativo, recargas falsas ou dados importantes sendo apagados por engano. A diferenca e parecida com mostrar uma copia de um documento em vez de entregar o documento original para alguem rasurar. Com os atributos `private`, a classe `Passageiro` continua dona dos seus dados. Outras classes conseguem consultar informacoes pelos getters, mas as alteracoes precisam passar por metodos controlados, como `adicionarSaldo()` e `pagarViagem()`.
+
+---
+
 ## Desafios Tecnicos Implementados
 
 ### Aula 1
@@ -61,3 +71,7 @@ Foram criadas a classe `Passageiro`, com os atributos `nome` e `saldo`, e a clas
 ### Aula 2
 
 Foram adicionados os metodos `adicionarSaldo(double valor)` e `pagarViagem(double custo)` na classe `Passageiro`. Os dois metodos recebem parametros, retornam `boolean` para indicar sucesso ou falha e validam os dados antes de alterar o saldo. A classe `SistemaPrincipal` foi atualizada para testar recargas validas, recarga invalida, pagamento com saldo suficiente, pagamento com saldo insuficiente e custo invalido.
+
+### Aula 3
+
+Os atributos `nome`, `cpf` e `saldo` da classe `Passageiro` foram alterados para `private`. Tambem foram criados getters publicos para leitura e setters privados com validacao, impedindo alteracoes diretas fora da propria classe. O `SistemaPrincipal` foi atualizado para usar o construtor e acessar os dados somente pelos metodos publicos.
