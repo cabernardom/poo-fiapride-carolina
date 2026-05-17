@@ -23,7 +23,7 @@ Este projeto acompanha os desafios das aulas 1 a 9 de Programacao Orientada a Ob
 - [x] Aula 3 - Encapsulamento
 - [x] Aula 4 - Construtores
 - [x] Aula 5 - Associacao
-- [ ] Aula 6 - Heranca
+- [x] Aula 6 - Heranca
 - [ ] Aula 7 - Polimorfismo
 - [ ] Aula 8 - Classes Abstratas
 - [ ] Aula 9 - Interfaces
@@ -82,6 +82,16 @@ Pedir o objeto inteiro e melhor porque a viagem nao depende apenas do nome do pa
 
 ---
 
+### Aula 6 - Heranca
+
+**Pergunta:** No nosso codigo, a mae `Veiculo` possui os atributos `placa` e `modelo` como `private`. Quando o `Carro` herda de `Veiculo`, ele recebe esses atributos, mas o codigo dentro de `Carro` nao consegue fazer `this.placa = "ABC"`. Ele e obrigado a usar o `super()` ou os metodos da classe mae. Por que o Java nao deixa a filha alterar as variaveis privadas da mae diretamente?
+
+**Sua Resposta:**
+
+O Java nao permite esse acesso direto porque `private` significa que somente a propria classe controla aquele dado. Mesmo que `Carro` seja um tipo de `Veiculo`, ele nao deve quebrar as regras internas da classe mae. Se a filha pudesse alterar `placa` diretamente, ela poderia ignorar a validacao criada em `Veiculo` e colocar uma placa vazia ou invalida. Isso protegeria mal o sistema e quebraria o encapsulamento aprendido na Aula 3. O uso de `super()` no construtor respeita a regra de nascimento definida pela mae, enquanto os getters e metodos publicos permitem acesso controlado. Assim, a heranca reaproveita codigo sem destruir a seguranca dos dados.
+
+---
+
 ## Desafios Tecnicos Implementados
 
 ### Aula 1
@@ -103,3 +113,7 @@ Foi criada a classe `Veiculo`, com os atributos privados `placa` e `modelo`. A c
 ### Aula 5
 
 Foi criada a classe `Viagem`, associando objetos de `Passageiro` e `Veiculo` por meio dos atributos `solicitante` e `veiculoUtilizado`. O construtor da viagem exige destino, passageiro e veiculo, e o metodo `exibirResumo()` navega pelos objetos associados para imprimir nome do passageiro, modelo e placa do veiculo. O `SistemaPrincipal` tambem testa a passagem por referencia ao alterar o saldo do passageiro depois da viagem criada.
+
+### Aula 6
+
+Foram criadas as classes `Carro` e `Moto`, ambas herdando de `Veiculo` com `extends`. A classe `Carro` adiciona o atributo exclusivo `capacidadePassageiros`, enquanto a classe `Moto` adiciona o atributo `isEletrica`. Os construtores das subclasses usam `super()` para reaproveitar a inicializacao obrigatoria da classe mae, e o `SistemaPrincipal` testa os metodos herdados e os atributos especificos de cada filha.

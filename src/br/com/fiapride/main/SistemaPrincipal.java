@@ -1,7 +1,8 @@
 package br.com.fiapride.main;
 
+import br.com.fiapride.model.Carro;
+import br.com.fiapride.model.Moto;
 import br.com.fiapride.model.Passageiro;
-import br.com.fiapride.model.Veiculo;
 import br.com.fiapride.model.Viagem;
 
 public class SistemaPrincipal {
@@ -31,16 +32,20 @@ public class SistemaPrincipal {
         // A linha abaixo nao compila porque saldo agora e private.
         // passageiro1.saldo = 999999.0;
 
-        System.out.println("--- Cadastro de Veiculos ---");
-        Veiculo meuCarro = new Veiculo("ABC-1234", "Toyota Corolla");
-        Veiculo veiculoPendente = new Veiculo();
+        System.out.println("--- Teste de Heranca na Frota ---");
+        Carro meuCarro = new Carro("ABC-1234", "Toyota Corolla", 4);
+        Moto motoEletrica = new Moto("MOT-2026", "Voltz EVS", true);
 
-        System.out.println("Veiculo: " + meuCarro.getModelo() + " | Placa: " + meuCarro.getPlaca());
+        System.out.println("Carro: " + meuCarro.getModelo() + " | Placa: " + meuCarro.getPlaca()
+                + " | Capacidade: " + meuCarro.getCapacidadePassageiros() + " passageiros");
+        System.out.println("Moto: " + motoEletrica.getModelo() + " | Placa: " + motoEletrica.getPlaca());
+
+        if (motoEletrica.isEletrica()) {
+            System.out.println("A moto eletrica esta disponivel para viagens sustentaveis.");
+        }
+
         meuCarro.atualizarPlaca("XYZ-9876");
         meuCarro.atualizarPlaca("");
-
-        System.out.println("Veiculo pendente: " + veiculoPendente.getModelo() + " | Placa: "
-                + veiculoPendente.getPlaca());
 
         System.out.println("--- Associacao entre Objetos ---");
         Viagem viagemDaAna = new Viagem("Avenida Paulista, 1000", passageiro1, meuCarro);
