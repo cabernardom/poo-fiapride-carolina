@@ -22,7 +22,7 @@ Este projeto acompanha os desafios das aulas 1 a 9 de Programacao Orientada a Ob
 - [x] Aula 2 - Metodos
 - [x] Aula 3 - Encapsulamento
 - [x] Aula 4 - Construtores
-- [ ] Aula 5 - Associacao
+- [x] Aula 5 - Associacao
 - [ ] Aula 6 - Heranca
 - [ ] Aula 7 - Polimorfismo
 - [ ] Aula 8 - Classes Abstratas
@@ -72,6 +72,16 @@ Gerar getters e setters para tudo automaticamente e perigoso porque transforma o
 
 ---
 
+### Aula 5 - Associacao
+
+**Pergunta:** No construtor da `Viagem`, nos exigimos o objeto inteiro (`Passageiro solicitante`). Se o resumo so precisa imprimir o nome da pessoa, nao seria mais facil pedir apenas a `String` do nome no construtor da `Viagem`?
+
+**Sua Resposta:**
+
+Pedir o objeto inteiro e melhor porque a viagem nao depende apenas do nome do passageiro. O nome serve para exibir um resumo, mas as regras de negocio precisam acessar outros dados e comportamentos, como consultar saldo e pagar a corrida. Se a `Viagem` guardasse apenas a String "Ana Silva", ela nao conseguiria chamar `getSaldo()` nem `pagarViagem()`, porque texto nao tem esses comportamentos. Ao receber um `Passageiro`, a classe `Viagem` fica associada ao usuario real do sistema. Isso tambem mostra a passagem por referencia: se o saldo da Ana muda depois da viagem ser criada, a viagem continua enxergando o mesmo objeto atualizado. Assim, o relacionamento fica mais rico, mais fiel ao mundo real e preparado para regras futuras.
+
+---
+
 ## Desafios Tecnicos Implementados
 
 ### Aula 1
@@ -89,3 +99,7 @@ Os atributos `nome`, `cpf` e `saldo` da classe `Passageiro` foram alterados para
 ### Aula 4
 
 Foi criada a classe `Veiculo`, com os atributos privados `placa` e `modelo`. A classe possui um construtor padrao que usa `this()` para reaproveitar o construtor customizado, alem de um construtor customizado que recebe placa e modelo. Tambem foram usados `this.` nos acessos internos, getters publicos para leitura, `setPlaca()` privado com validacao e o metodo publico `atualizarPlaca()` para representar a troca de placa como uma acao de negocio.
+
+### Aula 5
+
+Foi criada a classe `Viagem`, associando objetos de `Passageiro` e `Veiculo` por meio dos atributos `solicitante` e `veiculoUtilizado`. O construtor da viagem exige destino, passageiro e veiculo, e o metodo `exibirResumo()` navega pelos objetos associados para imprimir nome do passageiro, modelo e placa do veiculo. O `SistemaPrincipal` tambem testa a passagem por referencia ao alterar o saldo do passageiro depois da viagem criada.

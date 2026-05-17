@@ -30,7 +30,9 @@ public class Veiculo {
     private void setPlaca(String placa) {
         if (placa == null || placa.isBlank()) {
             System.out.println("Erro de validacao: a placa informada e invalida.");
-            this.placa = "PLACA-PENDENTE";
+            if (this.placa == null) {
+                this.placa = "PLACA-PENDENTE";
+            }
             return;
         }
 

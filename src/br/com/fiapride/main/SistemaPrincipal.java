@@ -2,6 +2,7 @@ package br.com.fiapride.main;
 
 import br.com.fiapride.model.Passageiro;
 import br.com.fiapride.model.Veiculo;
+import br.com.fiapride.model.Viagem;
 
 public class SistemaPrincipal {
 
@@ -40,5 +41,16 @@ public class SistemaPrincipal {
 
         System.out.println("Veiculo pendente: " + veiculoPendente.getModelo() + " | Placa: "
                 + veiculoPendente.getPlaca());
+
+        System.out.println("--- Associacao entre Objetos ---");
+        Viagem viagemDaAna = new Viagem("Avenida Paulista, 1000", passageiro1, meuCarro);
+        viagemDaAna.definirValor(25.0);
+        viagemDaAna.exibirResumo();
+
+        System.out.println("Saldo consultado pela viagem antes da nova recarga: R$"
+                + viagemDaAna.getSolicitante().getSaldo());
+        passageiro1.adicionarSaldo(15.0);
+        System.out.println("Saldo consultado pela viagem depois da nova recarga: R$"
+                + viagemDaAna.getSolicitante().getSaldo());
     }
 }
