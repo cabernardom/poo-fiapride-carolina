@@ -21,7 +21,7 @@ Este projeto acompanha os desafios das aulas 1 a 9 de Programacao Orientada a Ob
 - [x] Aula 1 - Classes e Objetos
 - [x] Aula 2 - Metodos
 - [x] Aula 3 - Encapsulamento
-- [ ] Aula 4 - Construtores
+- [x] Aula 4 - Construtores
 - [ ] Aula 5 - Associacao
 - [ ] Aula 6 - Heranca
 - [ ] Aula 7 - Polimorfismo
@@ -62,6 +62,16 @@ O `get` publico e mais seguro porque ele apenas entrega uma leitura do valor, se
 
 ---
 
+### Aula 4 - Construtores
+
+**Pergunta:** Na nossa classe `Veiculo`, nos tomamos duas decisoes arquitetonicas muito importantes: nao criamos o metodo `setModelo()` publico e o `setPlaca()` foi criado como privado, com um metodo publico chamado `atualizarPlaca()` para acessa-lo. Por que e um erro gerar getters e setters para tudo automaticamente?
+
+**Sua Resposta:**
+
+Gerar getters e setters para tudo automaticamente e perigoso porque transforma os atributos em dados quase publicos, so que com outro nome. Nem tudo em um objeto deve poder mudar livremente. No caso de um veiculo, o modelo faz parte da identidade do carro: um Toyota Corolla nao vira outro modelo apenas porque alguem chamou um metodo. Por isso, nao existe `setModelo()` publico. Ja a placa ate pode mudar, mas no mundo real isso exige um processo, como uma atualizacao no Detran. O metodo `atualizarPlaca()` deixa essa intencao clara e chama internamente a validacao feita por `setPlaca()`. Assim, o codigo evita fraudes, bloqueia placas vazias e representa melhor uma regra de negocio real, em vez de permitir alteracoes soltas sem significado.
+
+---
+
 ## Desafios Tecnicos Implementados
 
 ### Aula 1
@@ -75,3 +85,7 @@ Foram adicionados os metodos `adicionarSaldo(double valor)` e `pagarViagem(doubl
 ### Aula 3
 
 Os atributos `nome`, `cpf` e `saldo` da classe `Passageiro` foram alterados para `private`. Tambem foram criados getters publicos para leitura e setters privados com validacao, impedindo alteracoes diretas fora da propria classe. O `SistemaPrincipal` foi atualizado para usar o construtor e acessar os dados somente pelos metodos publicos.
+
+### Aula 4
+
+Foi criada a classe `Veiculo`, com os atributos privados `placa` e `modelo`. A classe possui um construtor padrao que usa `this()` para reaproveitar o construtor customizado, alem de um construtor customizado que recebe placa e modelo. Tambem foram usados `this.` nos acessos internos, getters publicos para leitura, `setPlaca()` privado com validacao e o metodo publico `atualizarPlaca()` para representar a troca de placa como uma acao de negocio.

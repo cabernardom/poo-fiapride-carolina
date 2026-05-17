@@ -1,6 +1,7 @@
 package br.com.fiapride.main;
 
 import br.com.fiapride.model.Passageiro;
+import br.com.fiapride.model.Veiculo;
 
 public class SistemaPrincipal {
 
@@ -28,5 +29,16 @@ public class SistemaPrincipal {
 
         // A linha abaixo nao compila porque saldo agora e private.
         // passageiro1.saldo = 999999.0;
+
+        System.out.println("--- Cadastro de Veiculos ---");
+        Veiculo meuCarro = new Veiculo("ABC-1234", "Toyota Corolla");
+        Veiculo veiculoPendente = new Veiculo();
+
+        System.out.println("Veiculo: " + meuCarro.getModelo() + " | Placa: " + meuCarro.getPlaca());
+        meuCarro.atualizarPlaca("XYZ-9876");
+        meuCarro.atualizarPlaca("");
+
+        System.out.println("Veiculo pendente: " + veiculoPendente.getModelo() + " | Placa: "
+                + veiculoPendente.getPlaca());
     }
 }
