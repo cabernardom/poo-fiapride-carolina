@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiapride.model.Carro;
+import br.com.fiapride.model.CarroEletrico;
+import br.com.fiapride.model.Celular;
 import br.com.fiapride.model.Moto;
 import br.com.fiapride.model.Passageiro;
+import br.com.fiapride.model.Recarregavel;
 import br.com.fiapride.model.Veiculo;
 import br.com.fiapride.model.Viagem;
 
@@ -76,5 +79,22 @@ public class SistemaPrincipal {
         passageiro1.adicionarSaldo(15.0);
         System.out.println("Saldo consultado pela viagem depois da nova recarga: R$"
                 + viagemDaAna.getSolicitante().getSaldo());
+
+        System.out.println("--- Teste de Interfaces ---");
+        CarroEletrico tesla = new CarroEletrico("TES-9999", "Tesla Model 3");
+        Celular celular = new Celular("iPhone 15");
+
+        Recarregavel[] recarregaveis = { tesla, celular };
+
+        for (Recarregavel recarregavel : recarregaveis) {
+            recarregavel.recarregar(85);
+        }
+
+        tesla.exibirTipo();
+        System.out.println(tesla.calcularAutonomia());
+        System.out.println("Bateria do celular: " + celular.getNivelBateria() + "%");
+        System.out.println("Tesla e um Veiculo? " + (tesla instanceof Veiculo));
+        System.out.println("Tesla e Recarregavel? " + (tesla instanceof Recarregavel));
+        System.out.println("Celular e Recarregavel? " + (celular instanceof Recarregavel));
     }
 }
