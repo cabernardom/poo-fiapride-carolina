@@ -58,9 +58,13 @@ public class SistemaPrincipal {
 
         for (Veiculo veiculo : frota) {
             veiculo.abastecer(50);
+            veiculo.exibirTipo();
             System.out.println("Veiculo: " + veiculo.getModelo());
             System.out.println(veiculo.calcularAutonomia());
         }
+
+        // A linha abaixo nao compila porque Veiculo agora e uma classe abstrata.
+        // Veiculo veiculoGenerico = new Veiculo("GEN-0000", "Generico");
 
         System.out.println("--- Associacao entre Objetos ---");
         Viagem viagemDaAna = new Viagem("Avenida Paulista, 1000", passageiro1, meuCarro);

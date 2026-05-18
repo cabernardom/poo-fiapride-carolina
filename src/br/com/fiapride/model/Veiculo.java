@@ -1,6 +1,6 @@
 package br.com.fiapride.model;
 
-public class Veiculo {
+public abstract class Veiculo {
     private String placa;
     private String modelo;
     private double nivelCombustivel;
@@ -29,9 +29,9 @@ public class Veiculo {
         setPlaca(novaPlaca);
     }
 
-    public String calcularAutonomia() {
-        return "Autonomia nao definida para um veiculo generico.";
-    }
+    public abstract void exibirTipo();
+
+    public abstract String calcularAutonomia();
 
     public void abastecer(double quantidade) {
         if (quantidade <= 0) {
