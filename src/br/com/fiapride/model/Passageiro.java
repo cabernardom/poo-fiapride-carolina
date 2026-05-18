@@ -45,7 +45,7 @@ public class Passageiro {
 
     private void setSaldo(double valor) {
         if (valor < 0) {
-            System.out.println("Erro de seguranca: tentativa de definir saldo negativo bloqueada.");
+            System.out.println("Erro de segurança: tentativa de definir saldo negativo bloqueada.");
             return;
         }
 

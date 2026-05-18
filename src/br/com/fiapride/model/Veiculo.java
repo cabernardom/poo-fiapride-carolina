@@ -3,6 +3,7 @@ package br.com.fiapride.model;
 public class Veiculo {
     private String placa;
     private String modelo;
+    private double nivelCombustivel;
 
     public Veiculo() {
         this("PLACA-PENDENTE", "Modelo nao informado");
@@ -11,6 +12,7 @@ public class Veiculo {
     public Veiculo(String placa, String modelo) {
         setPlaca(placa);
         setModelo(modelo);
+        setNivelCombustivel(0);
         System.out.println("Registro inicial: um " + this.modelo + " nasceu com a placa " + this.placa + ".");
     }
 
@@ -25,6 +27,23 @@ public class Veiculo {
     public void atualizarPlaca(String novaPlaca) {
         System.out.println("Solicitada atualizacao de placa no Detran para o veiculo " + this.modelo + ".");
         setPlaca(novaPlaca);
+    }
+
+    public String calcularAutonomia() {
+        return "Autonomia nao definida para um veiculo generico.";
+    }
+
+    public void abastecer(double quantidade) {
+        if (quantidade <= 0) {
+            System.out.println("Erro: a quantidade de combustivel deve ser maior que zero.");
+            return;
+        }
+
+        setNivelCombustivel(this.nivelCombustivel + quantidade);
+    }
+
+    public double getNivelCombustivel() {
+        return this.nivelCombustivel;
     }
 
     private void setPlaca(String placa) {
@@ -48,5 +67,14 @@ public class Veiculo {
         }
 
         this.modelo = modelo;
+    }
+
+    private void setNivelCombustivel(double nivelCombustivel) {
+        if (nivelCombustivel < 0) {
+            System.out.println("Erro: o nivel de combustivel nao pode ser negativo.");
+            return;
+        }
+
+        this.nivelCombustivel = nivelCombustivel;
     }
 }

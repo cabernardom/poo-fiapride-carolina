@@ -1,8 +1,12 @@
 package br.com.fiapride.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.fiapride.model.Carro;
 import br.com.fiapride.model.Moto;
 import br.com.fiapride.model.Passageiro;
+import br.com.fiapride.model.Veiculo;
 import br.com.fiapride.model.Viagem;
 
 public class SistemaPrincipal {
@@ -46,6 +50,17 @@ public class SistemaPrincipal {
 
         meuCarro.atualizarPlaca("XYZ-9876");
         meuCarro.atualizarPlaca("");
+
+        System.out.println("--- Relatorio de Autonomia da Frota ---");
+        List<Veiculo> frota = new ArrayList<>();
+        frota.add(meuCarro);
+        frota.add(motoEletrica);
+
+        for (Veiculo veiculo : frota) {
+            veiculo.abastecer(50);
+            System.out.println("Veiculo: " + veiculo.getModelo());
+            System.out.println(veiculo.calcularAutonomia());
+        }
 
         System.out.println("--- Associacao entre Objetos ---");
         Viagem viagemDaAna = new Viagem("Avenida Paulista, 1000", passageiro1, meuCarro);
